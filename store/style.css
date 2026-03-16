@@ -1,0 +1,412 @@
+/* =======================
+   GLOBAL
+======================= */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    color: #000;
+    text-align: center;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* =======================
+   HEADER
+======================= */
+.header {
+    background: black;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.3rem;
+}
+
+.header a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.header a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #c7db14;
+    left: 0;
+    bottom: -4px;
+    transition: width 0.3s ease;
+}
+
+.header a:hover {
+    color: #c7db14;
+    transform: scale(1.1);
+}
+
+.header a:hover::after {
+    width: 100%;
+}
+
+.header input {
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: none;
+    background: white;
+    color: black;
+}
+
+.header input::placeholder {
+    color: #555;
+}
+
+/* =======================
+   HERO
+======================= */
+.hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    padding: 80px 20px;
+    color: white;
+    text-align: center;
+    background-image: url("images/logo.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+}
+
+.hero * {
+    position: relative;
+    z-index: 1;
+}
+
+/* =======================
+   CATEGORIES
+======================= */
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 30px 0;
+}
+
+.category {
+    padding: 12px 25px;
+    border-radius: 25px;
+    background-color: #eee;
+    cursor: pointer;
+    user-select: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: transform 0.3s, background 0.3s, color 0.3s;
+    color: #000;
+}
+
+.category:hover {
+    transform: scale(1.05);
+    background-color: #c7db14;
+    color: black;
+}
+
+.category.active {
+    background-color: #333;
+    color: white;
+}
+
+@media (max-width: 500px) {
+    .category {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+    }
+}
+
+/* =======================
+   PRODUCTS (GRID)
+======================= */
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    padding: 40px;
+}
+
+.product {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform .3s, box-shadow .3s, background 0.3s, color 0.3s;
+    color: #000;
+}
+
+.product:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,.2);
+}
+
+.product img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.product h3 {
+    margin: 12px 0 6px;
+    font-size: 1rem;
+    color: inherit;
+}
+
+.product p {
+    margin: 0 0 10px;
+    font-size: 0.9rem;
+    color: inherit;
+}
+
+.product button,
+.product .btn {
+    margin-top: auto;
+    width: 100%;
+}
+
+/* =======================
+   RESPONSIVE GRID
+======================= */
+@media (max-width: 1000px) {
+    .products {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .products {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =======================
+   CART TABLE
+======================= */
+.container h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+#cartTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    color: #000;
+}
+
+#cartTable th, #cartTable td {
+    padding: 15px 20px;
+    text-align: left;
+}
+
+#cartTable th {
+    background: #000;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+}
+
+#cartTable tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+#cartTable tr:hover {
+    background: #f1f1f1;
+}
+
+#cartTable td button {
+    padding: 6px 12px;
+    background: #c7db14;
+    color: #000;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#cartTable td button:hover {
+    background: #a0b30f;
+}
+
+#total {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+    margin-top: 10px;
+}
+
+/* =======================
+   BUTTONS
+======================= */
+button, .btn, a.btn {
+    padding: 12px 18px;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+    text-decoration: none;
+}
+
+button:hover, .btn:hover, a.btn:hover {
+    background: #c7db14;
+    color: black;
+}
+
+/* =======================
+   FOOTER
+======================= */
+.footer {
+    background: black;
+    color: white;
+    padding: 15px;
+    margin-top: 40px;
+}
+
+/* =======================
+   HIDDEN
+======================= */
+.hidden {
+    display: none !important;
+}
+
+/* =======================
+   ANIMATIONS
+======================= */
+.fade-in {
+    animation: fade 1.2s ease;
+}
+
+.slide-up {
+    animation: slideUp 1s ease;
+}
+
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* =======================
+   DARK MODE
+======================= */
+body.dark-mode {
+    background: #121212;
+    color: #f0f0f0;
+}
+
+body.dark-mode .header,
+body.dark-mode .footer {
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+}
+
+body.dark-mode .header a {
+    color: #f0f0f0;
+}
+
+body.dark-mode .header input {
+    background: #2a2a2a;
+    color: #f0f0f0;
+    border: 1px solid #444;
+}
+
+body.dark-mode .header input::placeholder {
+    color: #bbb;
+}
+
+body.dark-mode .product {
+    background-color: #1a1a1a;
+    border-color: #333;
+    color: #f0f0f0;
+}
+
+body.dark-mode .product h3,
+body.dark-mode .product p,
+body.dark-mode .container h1,
+body.dark-mode #total {
+    color: #f0f0f0;
+}
+
+body.dark-mode .category {
+    background-color: #555;
+    color: #f0f0f0;
+}
+
+body.dark-mode .category.active {
+    background-color: #c7db14;
+    color: black;
+}
+
+body.dark-mode #cartTable {
+    background: #1e1e1e;
+    color: #f0f0f0;
+}
+
+body.dark-mode #cartTable th {
+    background: #333;
+}
+
+body.dark-mode #cartTable tr:nth-child(even) {
+    background: #2a2a2a;
+}
+
+body.dark-mode #cartTable tr:hover {
+    background: #3a3a3a;
+}
+
+body.dark-mode button,
+body.dark-mode .btn,
+body.dark-mode a.btn {
+    background: #c7db14;
+    color: #000;
+}
+
+body.dark-mode button:hover,
+body.dark-mode .btn:hover,
+body.dark-mode a.btn:hover {
+    background: #a0b30f;
+    color: #000;
+}

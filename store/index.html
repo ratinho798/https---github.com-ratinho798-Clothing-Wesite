@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S1nta Clothing Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">S1NTA Clothing Store</div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+
+        <input type="text" id="searchInput" placeholder="Search..." onkeyup="searchProducts()">
+        <button id="darkModeToggle">🌙</button>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero fade-in">
+        <h1>New Season Arrivals</h1>
+        <p>S1NTA to the world</p>
+        <a href="#shop" class="btn">Shop Now</a>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <div class="category active" onclick="filterCategory('all', this)">All</div>
+        <div class="category" onclick="filterCategory('shirts', this)">Shirts</div>
+        <div class="category" onclick="filterCategory('bottoms', this)">Bottoms</div>
+        <div class="category" onclick="filterCategory('outerwear', this)">Outerwear</div>
+        <div class="category" onclick="filterCategory('accessories', this)">Accessories</div>
+    </section>
+
+    <!-- Products -->
+    <main class="container">
+        <div class="products" id="shop">
+
+            <!-- ACCESSORIES -->
+            <div class="product slide-up" data-name="skully 2" data-category="accessories">
+                <img src="images/skully 2.jpeg" alt="Skully 2">
+                <h3>Skully 2</h3>
+                <p>NAD 179.99</p>
+                <button onclick="addToCart('Skully 2', 179.99)">Add to Cart</button>
+            </div>
+
+            <div class="product slide-up" data-name="skully 3" data-category="accessories">
+                <img src="images/skully 3.jpeg" alt="Skully 3">
+                <h3>Skully 3</h3>
+                <p>NAD 179.99</p>
+                <button onclick="addToCart('Skully 3', 179.99)">Add to Cart</button>
+            </div>
+
+            <div class="product slide-up" data-name="skully 4" data-category="accessories">
+                <img src="images/skully 4.jpeg" alt="Skully 4">
+                <h3>Skully 4</h3>
+                <p>NAD 179.99</p>
+                <button onclick="addToCart('Skully 4', 179.99)">Add to Cart</button>
+            </div>
+
+            <div class="product slide-up" data-name="beanie" data-category="accessories">
+                <img src="images/beanie.jpeg" alt="S1nta Beanie">
+                <h3>S1nta Beanie</h3>
+                <p>NAD 179.99</p>
+                <button onclick="addToCart('S1nta Beanie', 179.99)">Add to Cart</button>
+            </div>
+
+            <div class="product slide-up" data-name="socks 1" data-category="accessories">
+                <img src="images/socks.jpeg" alt="S1nta Socks 1">
+                <h3>S1nta Socks #1</h3>
+                <p>NAD 79.99</p>
+                <button onclick="addToCart('S1nta Socks #1', 79.99)">Add to Cart</button>
+            </div>
+
+            <div class="product slide-up" data-name="socks 2" data-category="accessories">
+                <img src="images/socks2.jpeg" alt="S1nta Socks 2">
+                <h3>S1nta Socks #2</h3>
+                <p>NAD 79.99</p>
+                <button onclick="addToCart('S1nta Socks #2', 79.99)">Add to Cart</button>
+            </div>
+
+            <div class="product slide-up" data-name="socks 3" data-category="accessories">
+                <img src="images/socks3.jpeg" alt="S1nta Socks 3">
+                <h3>S1nta Socks #3</h3>
+                <p>NAD 79.99</p>
+                <button onclick="addToCart('S1nta Socks #3', 79.99)">Add to Cart</button>
+            </div>
+
+            <div class="product slide-up" data-name="skully 1" data-category="accessories">
+                <img src="images/skully 1.jpeg" alt="Skully 1">
+                <h3>Skully 1</h3>
+                <p>NAD 179.99</p>
+                <button onclick="addToCart('Skully 1', 179.99)">Add to Cart</button>
+            </div>
+
+            <!-- BOTTOMS -->
+            <div class="product slide-up" data-name="sweats" data-category="bottoms">
+                <img src="images/pants.jpeg" alt="Sweats">
+                <h3>Sweats</h3>
+                <p>NAD 399.99</p>
+                <button onclick="addToCart('Sweats', 399.99)">Add to Cart</button>
+            </div>
+
+            <!-- SHIRTS -->
+            <div class="product slide-up" data-name="top 2" data-category="shirts">
+                <img src="images/top 2.jpeg" alt="Top 2">
+                <h3>Top 2</h3>
+                <p>NAD 249.99</p>
+                <button onclick="addToCart('Top 2', 249.99)">Add to Cart</button>
+            </div>
+
+            <div class="product slide-up" data-name="yellow tee" data-category="shirts">
+                <img src="images/yellow.jpeg" alt="Yellow Tee">
+                <h3>Yellow Tee</h3>
+                <p>NAD 249.99</p>
+                <button onclick="addToCart('Yellow Tee', 249.99)">Add to Cart</button>
+            </div>
+
+            <div class="product slide-up" data-name="white tee" data-category="shirts">
+                <img src="images/tshirt.jpeg" alt="White Tee">
+                <h3>White Tee</h3>
+                <p>NAD 249.99</p>
+                <button onclick="addToCart('White Tee', 249.99)">Add to Cart</button>
+            </div>
+
+            <div class="product slide-up" data-name="red tee" data-category="shirts">
+                <img src="images/red t.jpeg" alt="S1nta Red Tee">
+                <h3>S1nta Red Tee</h3>
+                <p>NAD 249.99</p>
+                <button onclick="addToCart('S1nta Red Tee', 249.99)">Add to Cart</button>
+            </div>
+
+            <div class="product slide-up" data-name="top 1" data-category="shirts">
+                <img src="images/top 1.jpeg" alt="Top 1">
+                <h3>Top 1</h3>
+                <p>NAD 249.99</p>
+                <button onclick="addToCart('Top 1', 249.99)">Add to Cart</button>
+            </div>
+
+            <div class="product slide-up" data-name="shirt 2" data-category="shirts">
+                <img src="images/shirt 2.jpeg" alt="Shirt 2">
+                <h3>Shirt 2</h3>
+                <p>NAD 249.99</p>
+                <button onclick="addToCart('Shirt 2', 249.99)">Add to Cart</button>
+            </div>
+
+            <div class="product slide-up" data-name="shirt 3" data-category="shirts">
+                <img src="images/shirt 3.jpeg" alt="Shirt 3">
+                <h3>Shirt 3</h3>
+                <p>NAD 249.99</p>
+                <button onclick="addToCart('Shirt 3', 249.99)">Add to Cart</button>
+            </div>
+
+            <div class="product slide-up" data-name="shirt 4" data-category="shirts">
+                <img src="images/shirt 4.jpeg" alt="Shirt 4">
+                <h3>Shirt 4</h3>
+                <p>NAD 249.99</p>
+                <button onclick="addToCart('Shirt 4', 249.99)">Add to Cart</button>
+            </div>
+
+            <div class="product slide-up" data-name="shirt 5" data-category="shirts">
+                <img src="images/shirt 5.jpeg" alt="Shirt 5">
+                <h3>Shirt 5</h3>
+                <p>NAD 249.99</p>
+                <button onclick="addToCart('Shirt 5', 249.99)">Add to Cart</button>
+            </div>
+
+            <div class="product slide-up" data-name="shirt 6" data-category="shirts">
+                <img src="images/shirt 6.jpeg" alt="Shirt 6">
+                <h3>Shirt 6</h3>
+                <p>NAD 249.99</p>
+                <button onclick="addToCart('Shirt 6', 249.99)">Add to Cart</button>
+            </div>
+
+            <div class="product slide-up" data-name="shirt 7" data-category="shirts">
+                <img src="images/shirt 7.jpeg" alt="Shirt 7">
+                <h3>Shirt 7</h3>
+                <p>NAD 249.99</p>
+                <button onclick="addToCart('Shirt 7', 249.99)">Add to Cart</button>
+            </div>
+
+            <div class="product slide-up" data-name="shirt 8" data-category="shirts">
+                <img src="images/shirt 8.jpeg" alt="Shirt 8">
+                <h3>Shirt 8</h3>
+                <p>NAD 249.99</p>
+                <button onclick="addToCart('Shirt 8', 249.99)">Add to Cart</button>
+            </div>
+
+            <div class="product slide-up" data-name="shirt 9" data-category="shirts">
+                <img src="images/shirt 9.jpeg" alt="Shirt 9">
+                <h3>Shirt 9</h3>
+                <p>NAD 249.99</p>
+                <button onclick="addToCart('Shirt 9', 249.99)">Add to Cart</button>
+            </div>
+
+            <!-- OUTERWEAR -->
+            <div class="product slide-up" data-name="zip up hoodie" data-category="outerwear">
+                <img src="images/hoodie.jpeg" alt="Zip Up Hoodie">
+                <h3>Zip Up Hoodie</h3>
+                <p>NAD 449.99</p>
+                <button onclick="addToCart('Zip Up Hoodie', 449.99)">Add to Cart</button>
+            </div>
+
+            <div class="product slide-up" data-name="normal hoodie 1" data-category="outerwear">
+                <img src="images/normal hoodie.jpeg" alt="Normal Hoodie 1">
+                <h3>Normal Hoodie #1</h3>
+                <p>NAD 449.99</p>
+                <button onclick="addToCart('Normal Hoodie #1', 449.99)">Add to Cart</button>
+            </div>
+
+            <div class="product slide-up" data-name="normal hoodie 2" data-category="outerwear">
+                <img src="images/normalhoodie2.jpeg" alt="Normal Hoodie 2">
+                <h3>Normal Hoodie #2</h3>
+                <p>NAD 449.99</p>
+                <button onclick="addToCart('Normal Hoodie #2', 449.99)">Add to Cart</button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; S1nta Clothing Store</p>
+    </footer>
+
+    <script>
+        let currentCategory = "all";
+
+        const darkModeToggle = document.getElementById("darkModeToggle");
+
+        function applySavedTheme() {
+            const savedTheme = localStorage.getItem("theme");
+
+            if (savedTheme === "dark") {
+                document.body.classList.add("dark-mode");
+                if (darkModeToggle) darkModeToggle.textContent = "☀️";
+            } else {
+                document.body.classList.remove("dark-mode");
+                if (darkModeToggle) darkModeToggle.textContent = "🌙";
+            }
+        }
+
+        applySavedTheme();
+
+        if (darkModeToggle) {
+            darkModeToggle.addEventListener("click", () => {
+                document.body.classList.toggle("dark-mode");
+
+                const isDark = document.body.classList.contains("dark-mode");
+                localStorage.setItem("theme", isDark ? "dark" : "light");
+                darkModeToggle.textContent = isDark ? "☀️" : "🌙";
+            });
+        }
+
+        function searchProducts() {
+            applyFilters();
+        }
+
+        function filterCategory(category, btn) {
+            currentCategory = category;
+
+            document.querySelectorAll(".category").forEach(c => {
+                c.classList.remove("active");
+            });
+
+            btn.classList.add("active");
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const input = document.getElementById("searchInput").value.toLowerCase().trim();
+            const products = document.querySelectorAll(".product");
+
+            products.forEach(product => {
+                const name = product.dataset.name.toLowerCase();
+                const category = product.dataset.category.toLowerCase();
+
+                const matchesSearch = name.includes(input) || category.includes(input);
+                const matchesCategory = currentCategory === "all" || category === currentCategory;
+
+                if (matchesSearch && matchesCategory) {
+                    product.classList.remove("hidden");
+                } else {
+                    product.classList.add("hidden");
+                }
+            });
+        }
+
+        function addToCart(name, price) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            const item = cart.find(p => p.name === name);
+
+            if (item) {
+                item.quantity++;
+            } else {
+                cart.push({
+                    name: name,
+                    price: price,
+                    quantity: 1
+                });
+            }
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert(name + " added to cart!");
+        }
+    </script>
+
+</body>
+</html>
