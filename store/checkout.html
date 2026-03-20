@@ -8,7 +8,7 @@
     <style>
         .checkout-box {
             max-width: 700px;
-            margin: 50px auto;
+            margin: 40px auto;
             background: white;
             padding: 30px;
             border-radius: 12px;
@@ -20,16 +20,25 @@
 
         .checkout-box h1 {
             margin-bottom: 10px;
+            font-size: 2rem;
         }
 
         .checkout-box p {
             margin-bottom: 20px;
         }
 
+        .checkout-table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+
         .checkout-table {
             width: 100%;
+            min-width: 520px;
             border-collapse: collapse;
-            margin: 20px 0;
             color: inherit;
         }
 
@@ -76,7 +85,7 @@
             color: red;
         }
 
-        button {
+        .checkout-box button {
             padding: 12px 20px;
             border: none;
             border-radius: 8px;
@@ -86,13 +95,15 @@
             font-size: 1rem;
             font-weight: bold;
             transition: opacity 0.3s;
+            width: auto;
+            min-width: 180px;
         }
 
-        button:hover {
+        .checkout-box button:hover {
             opacity: 0.9;
         }
 
-        button:disabled {
+        .checkout-box button:disabled {
             cursor: not-allowed;
             opacity: 0.7;
         }
@@ -107,16 +118,48 @@
             border-bottom: 1px solid #444;
         }
 
+        @media (max-width: 768px) {
+            .checkout-box {
+                margin: 25px 15px;
+                padding: 22px;
+            }
+
+            .checkout-box h1 {
+                font-size: 1.7rem;
+            }
+        }
+
         @media (max-width: 600px) {
             .checkout-box {
-                margin: 20px;
-                padding: 20px;
+                margin: 20px 12px;
+                padding: 18px;
+            }
+
+            .checkout-box h1 {
+                font-size: 1.45rem;
+            }
+
+            .checkout-box p {
+                font-size: 0.95rem;
+            }
+
+            .checkout-table {
+                min-width: 500px;
             }
 
             .checkout-table th,
             .checkout-table td {
                 padding: 10px 8px;
-                font-size: 0.95rem;
+                font-size: 0.92rem;
+            }
+
+            .total {
+                font-size: 1.05rem;
+            }
+
+            .checkout-box button {
+                width: 100%;
+                min-width: unset;
             }
         }
     </style>
@@ -131,7 +174,7 @@
         <a href="cart.html">Cart</a>
     </nav>
 
-    <button id="darkModeToggle">🌙</button>
+    <button id="darkModeToggle" type="button">🌙</button>
 </header>
 
 <main class="container fade-in" id="checkoutContainer">
@@ -143,8 +186,8 @@
 </footer>
 
 <script
-    type="text/javascript"
-    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+        type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
 </script>
 
 <script>
@@ -155,22 +198,24 @@
 
         if (savedTheme === "dark") {
             document.body.classList.add("dark-mode");
-            darkModeToggle.textContent = "☀️";
+            if (darkModeToggle) darkModeToggle.textContent = "☀️";
         } else {
             document.body.classList.remove("dark-mode");
-            darkModeToggle.textContent = "🌙";
+            if (darkModeToggle) darkModeToggle.textContent = "🌙";
         }
     }
 
     applySavedTheme();
 
-    darkModeToggle.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
 
-        const isDark = document.body.classList.contains("dark-mode");
-        localStorage.setItem("theme", isDark ? "dark" : "light");
-        darkModeToggle.textContent = isDark ? "☀️" : "🌙";
-    });
+            const isDark = document.body.classList.contains("dark-mode");
+            localStorage.setItem("theme", isDark ? "dark" : "light");
+            darkModeToggle.textContent = isDark ? "☀️" : "🌙";
+        });
+    }
 
     emailjs.init({
         publicKey: "OMcw_Rrcm3XZo8J7w"
@@ -186,7 +231,7 @@
             .join("\n");
 
         const templateParams = {
-            supplier_email: "hamutenyaabraham27@gmail.com",
+            supplier_email: "s1ntatotheworld@gmail.com",
             store_name: "S1NTA Clothing Store",
             subject: "New Order Received",
             order_items: orderLines,
@@ -207,22 +252,23 @@
                 <div class="checkout-box">
                     <h1>Your Cart is Empty 😔</h1>
                     <p>Looks like you haven't added anything yet.</p>
-                    <button onclick="window.location.href='index.html'">Go Shopping</button>
+                    <button type="button" onclick="window.location.href='index.html'">Go Shopping</button>
                 </div>
             `;
             return;
         }
 
         let itemsHTML = `
-            <table class="checkout-table">
-                <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <div class="checkout-table-wrapper">
+                <table class="checkout-table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
         `;
 
         let total = 0;
@@ -241,8 +287,9 @@
         });
 
         itemsHTML += `
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         `;
 
         container.innerHTML = `
@@ -252,7 +299,7 @@
                 ${itemsHTML}
                 <p class="total">Total: NAD ${total.toFixed(2)}</p>
                 <p id="emailStatus" class="status-message"></p>
-                <button id="returnHomeBtn">Return Home</button>
+                <button id="returnHomeBtn" type="button">Return Home</button>
             </div>
         `;
 
